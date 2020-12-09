@@ -16,7 +16,7 @@ public class WelcomeApiTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void exampleTest() {
+    public void Test() {
         String body = this.restTemplate.getForObject("/", String.class);
         assertThat(body).isEqualTo("Hello from test");
     }

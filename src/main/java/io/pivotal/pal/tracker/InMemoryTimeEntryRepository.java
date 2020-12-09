@@ -14,11 +14,11 @@ public class InMemoryTimeEntryRepository implements TimeEntryRepository {
         long id = currentId++;
 
         TimeEntry newTimeEntry = new TimeEntry(
-            id,
-            timeEntry.getProjectId(),
-            timeEntry.getUserId(),
-            timeEntry.getDate(),
-            timeEntry.getHours()
+                id,
+                timeEntry.getProjectId(),
+                timeEntry.getUserId(),
+                timeEntry.getDate(),
+                timeEntry.getHours()
         );
 
         timeEntries.put(id, newTimeEntry);
@@ -40,11 +40,11 @@ public class InMemoryTimeEntryRepository implements TimeEntryRepository {
         if (find(id) == null) return null;
 
         TimeEntry updatedEntry = new TimeEntry(
-            id,
-            timeEntry.getProjectId(),
-            timeEntry.getUserId(),
-            timeEntry.getDate(),
-            timeEntry.getHours()
+                id,
+                timeEntry.getProjectId(),
+                timeEntry.getUserId(),
+                timeEntry.getDate(),
+                timeEntry.getHours()
         );
 
         timeEntries.replace(id, updatedEntry);
@@ -52,8 +52,8 @@ public class InMemoryTimeEntryRepository implements TimeEntryRepository {
     }
 
     @Override
-    public void delete(Long id) {
+    public TimeEntry delete(Long id) {
         timeEntries.remove(id);
+        return null;
     }
 }
-
