@@ -43,21 +43,12 @@ public class JdbcTimeEntryRepository implements TimeEntryRepository {
         return find(generatedKeyHolder.getKey().longValue());
     }
 
-//    @Override
-//    public TimeEntry find(Long id) {
-//        return jdbcTemplate.query(
-//                "SELECT id, project_id, user_id, date, hours FROM time_entries WHERE id = ?",
-//                new Object[]{id},
-//                extractor);
-//    }
-
     @Override
     public TimeEntry find(Long id) {
-        List<TimeEntry> query = jdbcTemplate.query(
-               "SELECT id, project_id, user_id, date, hours FROM time_entries WHERE id = ?",
-                mapper, new Object[]{id});
-        TimeEntry timeEntry = query == null || query.size()==0 ? null : query.get(0);
-        return timeEntry;
+        return jdbcTemplate.query(
+            "SELECT id, project_id, user_id, date, hours FROM time_entries WHERE id = ?",
+            new Object[]{id},
+            extractor);
     }
 
     @Override
